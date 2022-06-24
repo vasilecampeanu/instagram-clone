@@ -20,7 +20,7 @@
 :root
 {
     // Default font
-    --default-font: "";
+    --default-font: 'Proxima';
 
     // Font sizes
     --font-size-xxsm: 14px;
@@ -30,7 +30,4 @@
     --font-size-lg: 24px;
     --font-size-xlg: 28px;
     --font-size-xxlg: 32px;
-
-    --article-title-desktop: 42px;
-    --article-title-mobile: 32px;
 }

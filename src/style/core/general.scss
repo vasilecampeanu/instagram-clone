@@ -5,3 +5,9 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
 }
+
+body
+{
+    font-family: var(--default-font);
+    font-size: var(--font-size-sm);
+}
