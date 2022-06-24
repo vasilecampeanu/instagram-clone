@@ -1,0 +1,47 @@
+// Theme variables
+// Dark theme variables
+:root
+{
+    --background-primary: #0E141A;
+    --background-secondary: #13181F;
+    --background-code-block: rgb(27, 32, 37);
+    --text-normal: #FFFFFF;
+    --text-accent: #4C6EF5;
+    --text-accent-hover: #F5D34C;
+}
+
+// Light theme variables
+[saved-theme="light"]
+{
+    --background-primary: #0E141A;
+    --background-secondary: #13181F;
+    --background-code-block: rgb(27, 32, 37);
+    --text-normal: #FFFFFF;
+    --text-accent: #4C6EF5;
+    --text-accent-hover: #F5D34C;
+}
+
+// Transitions
+:root
+{
+    --hover-transition: 0.25s;
+}
+
+// Typography
+:root
+{
+    // Default font
+    --default-font: "";
+
+    // Font sizes
+    --font-size-xxsm: 14px;
+    --font-size-xsm: 16px;
+    --font-size-sm: 18px;
+    --font-size-m: 20px;
+    --font-size-lg: 24px;
+    --font-size-xlg: 28px;
+    --font-size-xxlg: 32px;
+
+    --article-title-desktop: 42px;
+    --article-title-mobile: 32px;
+}
