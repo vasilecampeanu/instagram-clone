@@ -6,6 +6,7 @@ import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase
 import * as ROUTES from '../constants/routes';
 
 import FirebaseContext from '../db/firebase.context';
+import { doesUsernameExist } from '../db/firebase.api';
 
 export default function SignUp() {
     // Context hook
@@ -26,37 +27,44 @@ export default function SignUp() {
         event.preventDefault();
         const authentication = getAuth(firebase);
 
-        await createUserWithEmailAndPassword (
-            authentication, 
-            emailAddress, 
-            password
-        ).then((userCredential) => { 
-            const user = userCredential.user;
-            const db = getFirestore(firebase);
-            const collectionReference = collection(db, 'users');
+        const usernameExists = await doesUsernameExist(username);
 
-            console.log(user);
-            
-            updateProfile(user, {
-                displayName: username
-            })
-
-            addDoc(collectionReference, {
-                userId: userCredential.user.uid,
-                username: username.toLowerCase(),
-                fullName,
-                emailAddress: emailAddress.toLowerCase(),
-                following: [],
-                followers: [],
-                dateCreated: Date.now()
-            });
-        }).catch((error) => {
-            setEmailAddress('');
-            setFullName('');
+        if (!usernameExists) {
+            await createUserWithEmailAndPassword (
+                authentication, 
+                emailAddress, 
+                password
+            ).then((userCredential) => { 
+                const user = userCredential.user;
+                const db = getFirestore(firebase);
+                const collectionReference = collection(db, 'users');
+    
+                console.log(user);
+                
+                updateProfile(user, {
+                    displayName: username
+                })
+    
+                addDoc(collectionReference, {
+                    userId: userCredential.user.uid,
+                    username: username.toLowerCase(),
+                    fullName,
+                    emailAddress: emailAddress.toLowerCase(),
+                    following: [],
+                    followers: [],
+                    dateCreated: Date.now()
+                });
+            }).catch((error) => {
+                setFullName('');
+                setError(error.message);
+            });   
+        } else {
             setUsername('');
+            setFullName('');
+            setEmailAddress('');
             setPassword('');
-            setError(error.message);
-        });
+            setError('Username already tacken!');
+        }
     }
 
     // Use efect hook
