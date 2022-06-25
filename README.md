@@ -49,3 +49,8 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ```
 npm install node-sass
 ```
+
+# Setup firebase
+```
+npm install firebase
+```
