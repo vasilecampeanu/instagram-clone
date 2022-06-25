@@ -19,7 +19,7 @@ export default function Login() {
     const [error, setError] = useState('');
 
     // Handle validation
-    const isInvalid = password === '' || emailAddress === '';
+    const isInvalid = emailAddress === '' || password === '';
 
     // Navigate ho0ok
     const navigate = useNavigate();
@@ -61,13 +61,15 @@ export default function Login() {
                         <div className="login-inner-wrapper">
                             <div className="logo">
                                 <p>Instagram</p>
+                            </div>
+                            <div className="error-message">
                                 {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
                             </div>
                             <div className="login-form">
                                 <form onSubmit={handleLogin} method="POST">
                                     <input 
                                         type="text" 
-                                        placeholder="Phone number, username or email address"
+                                        placeholder="Email address"
                                         value={emailAddress}
                                         onChange={({ target }) => setEmailAddress(target.value)}
                                         />
