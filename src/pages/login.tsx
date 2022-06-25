@@ -1,18 +1,49 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect, useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import * as ROUTES from '../constants/routes';
+
+import FirebaseContext from '../db/firebase.context';
 
 // Assets import
 import mobileImg04 from '../assets/images/showcase04.png';
 
 export default function Login() {
+    // Context hook
+    const { firebase } = useContext(FirebaseContext);
+
+    // State hooks
     const [emailAddress, setEmailAddress] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
 
+    // Handle validation
     const isInvalid = password === '' || emailAddress === '';
 
+    // Navigate ho0ok
+    const navigate = useNavigate();
+
+    // Handle login
+    const handleLogin = async (event:any) => {
+        event.preventDefault();
+        const authentication = getAuth(firebase);
+        await signInWithEmailAndPassword (
+            authentication,
+            emailAddress, 
+            password
+        ).then((userCredential) => {
+            const user = userCredential.user;
+            console.log(user);
+            navigate(ROUTES.DASHBOARD);
+        }).catch((error:any) => {
+            setEmailAddress('');
+            setPassword('');
+            setError(error.message);
+        });
+    }
+
+    // Use efect hook
     useEffect(() => {
         document.title = 'Instagram | Log In';
     }, []);
@@ -29,10 +60,11 @@ export default function Login() {
                     <div className="user-actions">
                         <div className="login-inner-wrapper">
                             <div className="logo">
-                                Instagram
+                                <p>Instagram</p>
+                                {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
                             </div>
                             <div className="login-form">
-                                <form method="POST">
+                                <form onSubmit={handleLogin} method="POST">
                                     <input 
                                         type="text" 
                                         placeholder="Phone number, username or email address"

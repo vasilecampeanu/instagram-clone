@@ -4,7 +4,7 @@ import './style/index.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import app, { db } from './db/firebase.config';
+import app from './db/firebase.config';
 import FirebaseContext from './db/firebase.context';
 
 const root = ReactDOM.createRoot(
@@ -12,7 +12,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-    <FirebaseContext.Provider value={{ app, db }}>
+    <FirebaseContext.Provider value={{ app }}>
         <App />
     </FirebaseContext.Provider>
 );
