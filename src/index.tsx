@@ -4,8 +4,7 @@ import './style/index.scss'
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
-import app from './db/firebase.config';
-import { db } from './db/firebase.config';
+import app, { db } from './db/firebase.config';
 import FirebaseContext from './db/firebase.context';
 
 const root = ReactDOM.createRoot(

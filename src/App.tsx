@@ -7,6 +7,7 @@ const Dashboard = lazy(() => import ('./pages/dashboard'));
 const Login = lazy(() => import ('./pages/login'));
 const NotFound = lazy(() => import ('./pages/not-found'));
 const Profile = lazy(() => import ('./pages/profile'));
+const PasswordForgotten = lazy(() => import ('./pages/password-forgotten'));
 const SignUp = lazy(() => import ('./pages/signup'));
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
                     <Route path={ROUTES.LOGIN} element={<Login />} />
                     <Route path={ROUTES.NOT_FOUND} element={<NotFound />} />
                     <Route path={ROUTES.PROFILE} element={<Profile />} />
+                    <Route path={ROUTES.PASSWORD_FORGOTTEN} element={<PasswordForgotten />} />
                     <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
                 </Routes>
             </Suspense>
