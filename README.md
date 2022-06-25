@@ -54,3 +54,8 @@ npm install node-sass
 ```
 npm install firebase
 ```
+
+# Setup react-router-dom
+```
+npm install react-router-dom
+```
