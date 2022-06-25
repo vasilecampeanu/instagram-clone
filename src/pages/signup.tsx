@@ -22,6 +22,9 @@ export default function SignUp() {
     // Handle validation
     const isInvalid = emailAddress === '' || fullName === '' || username === '' || password === '';
 
+    // Navigate hook
+    const navigate = useNavigate();
+
     // Handle signup
     const handleSignUp = async (event:any) => {
         event.preventDefault();
@@ -30,7 +33,7 @@ export default function SignUp() {
         const usernameExists = await doesUsernameExist(username);
 
         if (!usernameExists) {
-            await createUserWithEmailAndPassword (
+            await createUserWithEmailAndPassword(
                 authentication, 
                 emailAddress, 
                 password
@@ -43,16 +46,18 @@ export default function SignUp() {
                 
                 updateProfile(user, {
                     displayName: username
-                })
-    
-                addDoc(collectionReference, {
-                    userId: userCredential.user.uid,
-                    username: username.toLowerCase(),
-                    fullName,
-                    emailAddress: emailAddress.toLowerCase(),
-                    following: [],
-                    followers: [],
-                    dateCreated: Date.now()
+                }).then(() => {
+                    addDoc(collectionReference, {
+                        userId: userCredential.user.uid,
+                        username: username.toLowerCase(),
+                        fullName,
+                        emailAddress: emailAddress.toLowerCase(),
+                        following: [],
+                        followers: [],
+                        dateCreated: Date.now()
+                    }).then(() => {
+                        navigate(ROUTES.DASHBOARD);
+                    });
                 });
             }).catch((error) => {
                 setFullName('');
@@ -63,7 +68,7 @@ export default function SignUp() {
             setFullName('');
             setEmailAddress('');
             setPassword('');
-            setError('Username already tacken!');
+            setError('Username already in use!');
         }
     }
 

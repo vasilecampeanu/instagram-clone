@@ -21,7 +21,7 @@ export default function Login() {
     // Handle validation
     const isInvalid = emailAddress === '' || password === '';
 
-    // Navigate ho0ok
+    // Navigate hook
     const navigate = useNavigate();
 
     // Handle login
