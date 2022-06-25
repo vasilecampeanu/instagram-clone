@@ -1,0 +1,63 @@
+.login-wrapper
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+
+    height: 100vh;
+
+    .container-left
+    {
+        display: grid;
+
+        .presentation
+        {
+            align-self: center;
+            justify-self: end;
+            height: 581px;
+            width: 380px;
+            background-image: url("/assets/images/phoneTemplate.png");
+            background-position: -46px 0;
+            background-size: 468.32px 634.15px;
+            flex-basis: 380.32px;
+            height: 581.15px;
+            margin-bottom: 12px;
+            margin-top: 32px;
+
+            img
+            {
+                height: 538.84px;
+                left: 112px;
+                top: 26px;
+                position: relative;
+                width: 252px;
+            }
+        }
+    }
+
+    .container-right
+    {
+        display: grid;
+
+        .user-actions
+        {
+            align-self: center;
+            justify-self: start;
+            height: 581px;
+            width: 350px;
+
+            // background-color: #ffffff;
+
+            .login-inner-wrapper
+            {
+                .login-form
+                {
+                    form
+                    {
+                        display: grid;
+                    }
+                }
+            }
+        }
+    }
+}
