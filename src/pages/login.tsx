@@ -34,7 +34,7 @@ const Login:FC<any> = () => {
             password
         ).then((userCredential) => {
             const user = userCredential.user;
-            console.log(user);
+            // console.log(user);
             navigate(ROUTES.DASHBOARD);
         }).catch((error:any) => {
             setEmailAddress('');
