@@ -10,27 +10,27 @@ import { doesUsernameExist } from '../db/firebase.api';
 
 const SignUp:FC<any> = () => {
     // Context hook
-    const {firebase} = useContext(FirebaseContext);
+    const {firebase} = useContext<any>(FirebaseContext);
 
     // State hooks
-    const [emailAddress, setEmailAddress] = useState('');
-    const [fullName, setFullName] = useState('');
-    const [username, setUsername] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [emailAddress, setEmailAddress] = useState<string>('');
+    const [fullName, setFullName] = useState<string>('');
+    const [username, setUsername] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     // Handle validation
-    const isInvalid = emailAddress === '' || fullName === '' || username === '' || password === '';
+    const isInvalid:boolean = emailAddress === '' || fullName === '' || username === '' || password === '';
 
     // Navigate hook
-    const navigate = useNavigate();
+    const navigate:any = useNavigate();
 
     // Handle signup
     const handleSignUp = async (event:any) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
 
-        const usernameExists = await doesUsernameExist(username);
+        const usernameExists:boolean = await doesUsernameExist(username);
 
         if (!usernameExists) {
             await createUserWithEmailAndPassword(

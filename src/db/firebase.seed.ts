@@ -1,7 +1,7 @@
 import { addDoc, collection } from "firebase/firestore";
 
 // NOTE: replace 'RZS9rEIh8gQ3bzj2OBtiDYoncnG3' with your Firebase auth user id (can be taken from Firebase at the auth section! Look for User UID)
-export function seedDatabase(db : any) {
+export const seedDatabase = (db : any) => {
     const dbRefUsers  = collection(db, "users");
     const dbRefPhotos = collection(db, "photos");
 

@@ -3,12 +3,12 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
 
-const Dashboard = lazy(() => import ('./pages/dashboard'));
-const Login = lazy(() => import ('./pages/login'));
-const NotFound = lazy(() => import ('./pages/not-found'));
-const Profile = lazy(() => import ('./pages/profile'));
-const PasswordForgotten = lazy(() => import ('./pages/password-forgotten'));
-const SignUp = lazy(() => import ('./pages/signup'));
+const Dashboard:any = lazy(() => import ('./pages/dashboard'));
+const Login:any = lazy(() => import ('./pages/login'));
+const NotFound:any = lazy(() => import ('./pages/not-found'));
+const Profile:any = lazy(() => import ('./pages/profile'));
+const PasswordForgotten:any = lazy(() => import ('./pages/password-forgotten'));
+const SignUp:any = lazy(() => import ('./pages/signup'));
 
 const App:FC = () => {
     return (

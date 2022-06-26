@@ -11,21 +11,21 @@ import mobileImg04 from '../assets/images/showcase04.png';
 
 const Login:FC<any> = () => {
     // Context hook
-    const { firebase } = useContext(FirebaseContext);
+    const { firebase } = useContext<any>(FirebaseContext);
 
     // State hooks
-    const [emailAddress, setEmailAddress] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
+    const [emailAddress, setEmailAddress] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [error, setError] = useState<string>('');
 
     // Handle validation
-    const isInvalid = emailAddress === '' || password === '';
+    const isInvalid:boolean = emailAddress === '' || password === '';
 
     // Navigate hook
-    const navigate = useNavigate();
+    const navigate:any = useNavigate();
 
     // Handle login
-    const handleLogin = async (event:any) => {
+    const handleLogin:any = async (event:any) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
         await signInWithEmailAndPassword (
