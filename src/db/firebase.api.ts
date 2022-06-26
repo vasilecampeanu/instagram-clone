@@ -8,10 +8,6 @@ export const doesUsernameExist = async (username:string) => {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
-    
-    querySnapshot.forEach((doc) => {
-        console.log(doc.id, " => ", doc.data());
-    });
 
     if (querySnapshot.docs.length) {
         console.log("The user exists!");
@@ -20,4 +16,17 @@ export const doesUsernameExist = async (username:string) => {
     }
 
     return querySnapshot.docs.length > 0;
+}
+
+export const getUserByUserId = async (userId:any) => {
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+    
+    const user = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        docId: doc.id
+    }));
+    
+    return user;
 }

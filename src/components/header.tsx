@@ -13,7 +13,7 @@ const Header:FC<any> = () => {
 
     useEffect(() => {
         if (user) {
-            console.log(user);
+            // console.log(user);
         }
     }, []);
 
