@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { FC, lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 import * as ROUTES from './constants/routes';
@@ -10,7 +10,7 @@ const Profile = lazy(() => import ('./pages/profile'));
 const PasswordForgotten = lazy(() => import ('./pages/password-forgotten'));
 const SignUp = lazy(() => import ('./pages/signup'));
 
-function App() {
+const App:FC = () => {
     return (
         <Router>
             <Suspense fallback={ <p>Loading...</p> }>

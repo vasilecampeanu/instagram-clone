@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export default function Timeline() {
+const Timeline:FC<any> = () => {
     return (
         <p>Hello from Timeline</p>
     )
 }
+
+export default Timeline;

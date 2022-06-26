@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export default function Header() {
+const Header:FC<any> = () => {
     return (
         <p>Hello from Header</p>
     )
 }
+
+export default Header;

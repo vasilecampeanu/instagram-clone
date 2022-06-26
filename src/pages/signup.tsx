@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
@@ -8,7 +8,7 @@ import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../db/firebase.context';
 import { doesUsernameExist } from '../db/firebase.api';
 
-export default function SignUp() {
+const SignUp:FC<any> = () => {
     // Context hook
     const {firebase} = useContext(FirebaseContext);
 
@@ -121,3 +121,5 @@ export default function SignUp() {
         </main>
     );
 }
+
+export default SignUp;

@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 
-export default function NotFound() {
+const NotFound:FC<any> = () => {
     useEffect(() => {
         document.title = '404 - Not Found';
     });
@@ -11,3 +11,5 @@ export default function NotFound() {
         </main>
     )
 }
+
+export default NotFound;

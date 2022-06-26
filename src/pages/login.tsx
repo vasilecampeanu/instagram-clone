@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect, useContext, FC } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
@@ -9,7 +9,7 @@ import FirebaseContext from '../db/firebase.context';
 // Assets import
 import mobileImg04 from '../assets/images/showcase04.png';
 
-export default function Login() {
+const Login:FC<any> = () => {
     // Context hook
     const { firebase } = useContext(FirebaseContext);
 
@@ -101,3 +101,5 @@ export default function Login() {
         </main>
     );
 }
+
+export default Login;

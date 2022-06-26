@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export default function Profile() {
+const Profile:FC<any> = () => {
     return (
         <p>Hello from Profile</p>
     )
 }
+
+export default Profile;

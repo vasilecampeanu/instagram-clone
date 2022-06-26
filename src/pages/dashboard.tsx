@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { FC, useEffect } from 'react';
 
 import Header from '../components/header';
 import Timeline from '../components/timeline';
 import Sidebar from '../components/sidebar';
 
-export default function Dashboard() {
+const Dashboard:FC<any> = () => {
 
     // Use effect hook
     useEffect(() => {
@@ -23,3 +23,5 @@ export default function Dashboard() {
         </div>
     )
 }
+
+export default Dashboard;

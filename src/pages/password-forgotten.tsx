@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 
-export default function NotFound() {
+const NotFound:FC<any> = () => {
     return (
         <p>Hello from Password Forgotten</p>
     )
 }
+
+export default NotFound;
