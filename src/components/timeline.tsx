@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import useFollowedUsersPhotos from '../hooks/use-followed-users-photos';
+import Post from './posts';
 
 const Timeline:FC<any> = () => {
     const { photos } = useFollowedUsersPhotos();
@@ -17,9 +18,7 @@ const Timeline:FC<any> = () => {
                 </>
             ) : photos && photos.length > 0 ? (
                 photos.map((content:any) => 
-                    <li key={content.docId}>
-                        {content.username}
-                    </li>
+                    <Post key={content.docId} content={content} />
                 )
             ) : (
                 <p className="text-center text-2xl">Follow people to see photos!</p>

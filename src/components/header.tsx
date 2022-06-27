@@ -21,7 +21,7 @@ const Header:FC<any> = () => {
         <div className="header-inner-wrapper">
             <nav className="navbar">
                 <div className="logo">
-                    <Link to={ROUTES.PASSWORD_FORGOTTEN}>Instagram</Link>
+                    <Link to={ROUTES.DASHBOARD}>Instagram</Link>
                 </div>
                 {user ? (
                     <>
@@ -50,7 +50,7 @@ const Header:FC<any> = () => {
                                 <Link to={`/profile/${user.displayName}`}>
                                     <img
                                         className="rounded-full h-8 w-8 flex"
-                                        src={`/images/avatars/${user.displayName}.jpg`}
+                                        src={`/assets/scrimba/avatars/${user.displayName}.jpg`}
                                         alt={`${user.displayName} profile picture`}
                                     />
                                 </Link>
