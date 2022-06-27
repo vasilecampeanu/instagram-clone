@@ -13,7 +13,7 @@ const Header:FC<any> = () => {
 
     useEffect(() => {
         if (user) {
-            // console.log(user);
+            console.log(user.email);
         }
     }, []);
 
@@ -48,7 +48,11 @@ const Header:FC<any> = () => {
                             </button>
                             <div className="flex items-center cursor-pointer">
                                 <Link to={`/profile/${user.displayName}`}>
-                                    Profile
+                                    <img
+                                        className="rounded-full h-8 w-8 flex"
+                                        src={`/images/avatars/${user.displayName}.jpg`}
+                                        alt={`${user.displayName} profile picture`}
+                                    />
                                 </Link>
                             </div>
                         </div>

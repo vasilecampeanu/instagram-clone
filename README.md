@@ -54,6 +54,11 @@ npm install firebase
 npm install react-router-dom
 ```
 
+# Install skeleton
+```
+npm install react-loading-skeleton
+```
+
 # Learn More
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
