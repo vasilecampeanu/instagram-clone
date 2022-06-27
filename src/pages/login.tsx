@@ -12,6 +12,14 @@ import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_wr
 import appStore from '../assets/images/appStore.png';
 import googlePlay from '../assets/images/googlePlay.png';
 
+// 
+
+import app from '../db/firebase.config';
+import { seedDatabase } from '../db/firebase.seed';
+
+console.log("Database seeding");
+// seedDatabase(app);
+
 const Login:FC<any> = () => {
     // Context hook
     const { firebase } = useContext<any>(FirebaseContext);
@@ -34,7 +42,7 @@ const Login:FC<any> = () => {
 
         await signInWithEmailAndPassword (
             authentication,
-            emailAddress, 
+            emailAddress,
             password
         ).then((userCredential) => {
             const user = userCredential.user;

@@ -1,27 +1,31 @@
 import { addDoc, collection } from "firebase/firestore";
+import { getFirestore } from "firebase/firestore";
 
-// NOTE: replace 'RZS9rEIh8gQ3bzj2OBtiDYoncnG3' with your Firebase auth user id (can be taken from Firebase at the auth section! Look for User UID)
-export const seedDatabase = (db : any) => {
+// console.log("Seeding");
+
+// NOTE: replace 'l8niHJQMd9Xp9G5JfFJYYhNnBx23' with your Firebase auth user id (can be taken from Firebase at the auth section! Look for User UID)
+export const seedDatabase = (app : any) => {
+    const db = getFirestore(app);
     const dbRefUsers  = collection(db, "users");
     const dbRefPhotos = collection(db, "photos");
 
     const users = [
-        {
-            userId: 'RZS9rEIh8gQ3bzj2OBtiDYoncnG3',
-            username: 'karl',
-            fullName: 'Karl Hadwen',
-            emailAddress: 'karlhadwen@gmail.com',
-            following: ['2'],
-            followers: ['2', '3', '4'],
-            dateCreated: Date.now()
-        },
+        // {
+        //     userId: 'l8niHJQMd9Xp9G5JfFJYYhNnBx23',
+        //     username: 'karl',
+        //     fullName: 'Karl Hadwen',
+        //     emailAddress: 'karlhadwen@gmail.com',
+        //     following: ['2'],
+        //     followers: ['2', '3', '4'],
+        //     dateCreated: Date.now()
+        // },
         {
             userId: '2',
             username: 'raphael',
             fullName: 'Raffaello Sanzio da Urbino',
             emailAddress: 'raphael@sanzio.com',
             following: [],
-            followers: ['RZS9rEIh8gQ3bzj2OBtiDYoncnG3'],
+            followers: ['l8niHJQMd9Xp9G5JfFJYYhNnBx23'],
             dateCreated: Date.now()
         },
         {
@@ -30,7 +34,7 @@ export const seedDatabase = (db : any) => {
             fullName: 'Salvador Dalí',
             emailAddress: 'salvador@dali.com',
             following: [],
-            followers: ['RZS9rEIh8gQ3bzj2OBtiDYoncnG3'],
+            followers: ['l8niHJQMd9Xp9G5JfFJYYhNnBx23'],
             dateCreated: Date.now()
         },
         {
@@ -39,7 +43,7 @@ export const seedDatabase = (db : any) => {
             fullName: 'George Orwell',
             emailAddress: 'george@orwell.com',
             following: [],
-            followers: ['RZS9rEIh8gQ3bzj2OBtiDYoncnG3'],
+            followers: ['l8niHJQMd9Xp9G5JfFJYYhNnBx23'],
             dateCreated: Date.now()
         }
     ];
