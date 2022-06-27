@@ -8,6 +8,9 @@ import FirebaseContext from '../db/firebase.context';
 
 // Assets import
 import mobileImg04 from '../assets/images/showcase04.png';
+import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_written.png';
+import appStore from '../assets/images/appStore.png';
+import googlePlay from '../assets/images/googlePlay.png';
 
 const Login:FC<any> = () => {
     // Context hook
@@ -28,6 +31,7 @@ const Login:FC<any> = () => {
     const handleLogin:any = async (event:any) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
+
         await signInWithEmailAndPassword (
             authentication,
             emailAddress, 
@@ -60,7 +64,7 @@ const Login:FC<any> = () => {
                     <div className="user-actions">
                         <div className="login-inner-wrapper">
                             <div className="logo">
-                                <p>Instagram</p>
+                                <img src={instagram_logo_hand_written} alt="" />
                             </div>
                             <div className="error-message">
                                 {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
@@ -79,21 +83,30 @@ const Login:FC<any> = () => {
                                         value={password}
                                         onChange={({ target }) => setPassword(target.value)}
                                     />
-                                    <button className={`${ isInvalid && 'opacity-50' }`} type="submit" disabled={isInvalid}>Log In</button>
+                                    <button className={`${ isInvalid && 'opacity-50' }`} type="submit" disabled={isInvalid}><p>Log In</p></button>
                                 </form>
                             </div>
                             <div className="separator">
-                                OR
+                                <div className="line"></div>
+                                <p>OR</p>
+                                <div className="line"></div>
+                            </div>
+                            <div className="facebook-login">
+                                Log in with Facebook
                             </div>
                             <div className="password-forgotten">
                                 <Link to={ROUTES.PASSWORD_FORGOTTEN}>Forgotten your password?</Link>
                             </div>
                         </div>
                         <div className="signup">
-                            Don't have an account? {' '} <Link to={ROUTES.SIGN_UP}>Sign Up</Link>
+                            <p>Don't have an account? {' '} <Link to={ROUTES.SIGN_UP}>Sign Up</Link></p>
                         </div>
                         <div className="mobile-download">
-                            Get the app.
+                            <p>Get the app.</p>
+                            <div>
+                                <img src={googlePlay} alt="" />
+                                <img src={appStore} alt="" />
+                            </div>
                         </div>
                     </div>
                 </div>

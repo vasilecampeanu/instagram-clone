@@ -46,8 +46,8 @@ const SignUp:FC<any> = () => {
                 
                 updateProfile(user, {
                     displayName: username
-                }).then(() => {
-                    addDoc(collectionReference, {
+                }).then(async () => {
+                    await addDoc(collectionReference, {
                         userId: userCredential.user.uid,
                         username: username.toLowerCase(),
                         fullName,
