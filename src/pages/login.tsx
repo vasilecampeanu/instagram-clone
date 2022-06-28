@@ -17,7 +17,7 @@ import googlePlay from '../assets/images/googlePlay.png';
 import app from '../db/firebase.config';
 import { seedDatabase } from '../db/firebase.seed';
 
-console.log("Database seeding");
+// console.log("Database seeding");
 // seedDatabase(app);
 
 const Login:FC<any> = () => {
