@@ -1,7 +1,6 @@
 // https://softauthor.com/firebase-firestore-add-document-data-using-adddoc/
 
-import { getFirestore, query, collection, where, getDocs } from 'firebase/firestore';
-import { FC } from 'react';
+import { getFirestore, query, collection, where, getDocs, doc, updateDoc, arrayRemove, arrayUnion, limit } from 'firebase/firestore';
 import app from './firebase.config';
 
 export const doesUsernameExist = async (username:string) => {
@@ -18,7 +17,7 @@ export const doesUsernameExist = async (username:string) => {
     return querySnapshot.docs.length > 0;
 }
 
-export const getUserByUserId = async (userId:any) => {
+export const getUserByUserId:any = async (userId:any) => {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
@@ -54,4 +53,45 @@ export async function getUserFollowedPhotos(userId:any, followingUserIds:any) {
     )
 
     return photosWithUserDetails;
+}
+
+export async function updateUserFollowing(docId:any, profileId:any, isFollowingProfile:any) {
+    const db = getFirestore(app);
+    const photos = doc(db, "users", docId);
+
+    await updateDoc(photos, {
+        // TODO: Look into this. It seems to work but may cause some unexpected errors.
+        following: isFollowingProfile ? arrayRemove(profileId) : arrayUnion(profileId)
+    });
+}
+
+export async function updateFollowedUserFollowers(docId:any, followingUserId:any, isFollowingProfile:any) {
+    const db = getFirestore(app);
+    const photos = doc(db, "users", docId);
+
+    await updateDoc(photos, {
+        // TODO: Look into this. It seems to work but may cause some unexpected errors.
+        following: isFollowingProfile ? arrayRemove(followingUserId) : arrayUnion(followingUserId)
+    });
+}
+
+export async function toggleFollow(
+    isFollowingProfile:any,
+    activeUserDocId:any,
+    profileDocId:any,
+    profileId:any,
+    followingUserId:any
+) {
+    await updateUserFollowing(activeUserDocId, profileId, isFollowingProfile);
+    await updateFollowedUserFollowers(profileDocId, followingUserId, isFollowingProfile);
+}
+
+export async function getSuggestedProfiles(userId:any) {
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), limit(10));
+    const querySnapshot = await getDocs(q);
+    const [{ following }] = await getUserByUserId(userId);
+    return querySnapshot.docs.map((user:any) => (
+        { ...user.data(), docId: user.id }
+    )).filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
 }

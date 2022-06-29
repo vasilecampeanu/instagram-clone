@@ -4,24 +4,24 @@ import { getUserByUserId, getUserFollowedPhotos } from '../db/firebase.api';
 
 export default function useFollowedUsersPhotos() {
     const [photos, setPhotos] = useState<any[]>([]);
-    const {
-        user: { uid: userId = '' }
-    } = useContext(UserContext);
+    const { user: { uid: userId = '' } } = useContext(UserContext);
 
     useEffect(() => {
         async function getTimelinePhotos() {
-            const followingUserIds:any = await getUserByUserId(userId);
+            const followingUserIds = await getUserByUserId(userId);
 
             if (followingUserIds && followingUserIds[0].following.length > 0) {
                 const followedUserPhotos:any = await getUserFollowedPhotos(userId, followingUserIds[0].following);
-                
-                // we need to call a function that will get us the photos
+
+                // We need to call a function that will get us the photos
                 followedUserPhotos.sort((a:any, b:any) => b.dateCreated - a.dateCreated);
                 setPhotos(followedUserPhotos);
             }
         }
 
-        getTimelinePhotos();
+        if (userId != '') {
+            getTimelinePhotos();
+        }
     }, [userId]);
 
     return { photos };
