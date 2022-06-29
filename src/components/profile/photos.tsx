@@ -1,0 +1,29 @@
+import { FC } from "react";
+import Skeleton from 'react-loading-skeleton';
+
+const Photos:FC<any> = ({photos}) => {
+    return(
+        <div className="gallery">
+            <div className="gallery-inner-layer">
+                {!photos ? (
+                    <>
+                        {[...new Array(9)].map((_, index) => (
+                            <Skeleton key={index} count={1} width={320} height={400} />
+                        ))}
+                    </>
+                ) : photos && photos.length > 0 ? (
+                    photos && photos.map((photo:any) => (
+                        <div key={photo.docId} className="relative group">
+                            <img src={photo.imageSrc} alt={photo.caption} />
+                        </div>
+                    ))
+                ) : null}    
+            </div>
+            <div className="empty-gallery">
+                {!photos || (photos && photos.length === 0 && <p className="text-center text-2xl">No Photos Yet</p>)}
+            </div>
+        </div>
+    );
+}
+
+export default Photos;
