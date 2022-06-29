@@ -1,0 +1,10 @@
+.dashboard-wrapper
+{
+    background-color: red;
+
+    main.dashboard
+    {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

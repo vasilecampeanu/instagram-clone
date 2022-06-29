@@ -9,7 +9,7 @@ const Timeline:FC<any> = () => {
     console.log(photos);
 
     return (
-        <div className="timeline">
+        <div className="timeline-wrapper">
             {!photos ? (
                 <>
                     {[...new Array(4)].map((_, index) => (

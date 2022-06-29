@@ -16,7 +16,7 @@ const Dashboard:FC<any> = () => {
             <header id="header">
                 <Header />
             </header>
-            <main id="main">
+            <main id="main" className="dashboard">
                 <Timeline />
                 <Sidebar />
             </main>

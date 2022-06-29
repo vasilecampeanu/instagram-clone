@@ -5,7 +5,9 @@ const Sidebar:FC<any> = () => {
     const { user: { docId, userId, following, username, fullName } = {} } = useUser();
 
     return (
-        <p>Hello from Sidebar</p>
+        <div className="sidebar-wrapper">
+            <p>Hello from Sidebar</p>
+        </div>
     )
 }
 
