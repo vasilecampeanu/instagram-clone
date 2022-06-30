@@ -1,0 +1,112 @@
+header
+{
+    display: grid;
+    background-color: white;
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    top: 0;
+    border-bottom: 1px solid #DBDBDB;
+
+    .header-inner-wrapper
+    {
+        justify-self: center;
+        padding: 0px 20px;
+
+        .navbar
+        {
+            width: 975px;
+            height: 60px;
+            display: grid;
+            grid-template-columns: auto 1fr;
+
+            .instagram-logo
+            {
+                align-self: center;
+                justify-self: start;
+
+                img
+                {
+                    width: 103px;
+                    height: 29px;
+                }
+            }
+
+            .actions
+            {
+                align-self: center;
+                justify-self: end;
+                display: flex;
+
+                .left-actions
+                {
+                    .search
+                    {
+                        input
+                        {
+                            width: 268px;
+                            height: 36px;
+                            background-color: #EFEFEF;
+                            border: none;
+                            border-radius: 7.5px;
+                            padding: 2.5px 10px;
+                            margin-right: 100px;
+                        }
+
+                        input:focus
+                        {
+                            outline: none !important;
+                            border: none;
+                        }
+                    }
+                }
+
+                .right-actions
+                {
+                    display: flex;
+                    gap: 10px;
+
+                    .home
+                    {
+                        align-self: center;
+
+                        svg
+                        {
+                            color: #262626;
+                            
+                        }
+                    }
+                    
+                    .btnLogOut
+                    {
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+
+                    .profile-icon
+                    {
+                        align-self: center;
+
+                        img
+                        {
+                            width: 24px;
+                            border-radius: 50%;
+                            height: 24px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+main
+{
+    padding-top: 60px !important;
+}
+
+main.login-page
+{
+    padding-top: 0px !important;
+}

@@ -69,7 +69,7 @@ const Login:FC<any> = () => {
     }, []);
 
     return (
-        <main id="main">
+        <main id="main" className="login-page">
             <div className="login-wrapper">
                 <div className="container-left">
                     <div className="presentation">
@@ -85,7 +85,7 @@ const Login:FC<any> = () => {
                     <div className="user-actions">
                         <div className="login-inner-wrapper">
                             <div className="logo">
-                                <img src={instagram_logo_hand_written} alt="" />
+                                <img src={instagram_logo_hand_written} alt="instagram" />
                             </div>
                             <div className="error-message">
                                 {error && <p className="mb-4 text-xs text-red-500">{error}</p>}
