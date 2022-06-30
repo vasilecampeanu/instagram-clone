@@ -30,6 +30,20 @@ export const getUserByUserId:any = async (userId:any) => {
     return user;
 }
 
+export const getUserByUsername:any = async (username:any) => {
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+    
+    const user = querySnapshot.docs.map((doc) => ({
+        ...doc.data(),
+        docId: doc.id
+    }));
+    
+    return user;
+}
+
+
 export async function getUserFollowedPhotos(userId:any, followingUserIds:any) {
     const db = getFirestore(app);
     const q = query(collection(db, "photos"), where("userId", "in", followingUserIds));
@@ -53,6 +67,32 @@ export async function getUserFollowedPhotos(userId:any, followingUserIds:any) {
     )
 
     return photosWithUserDetails;
+}
+
+export async function getUserIdByUsername(username:any) {
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), where("username", "==", username));
+    const querySnapshot = await getDocs(q);
+        
+    const [{ userId = null }] = querySnapshot.docs.map((item:any) => ({
+        ...item.data(),
+    }));
+    
+    return userId;
+}
+
+export async function getUserPhotosByUsername(username:any) {
+    const userId = await getUserIdByUsername(username);
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), where("userId", "==", userId));
+    const querySnapshot = await getDocs(q);
+        
+    const photos = querySnapshot.docs.map((item:any) => ({
+        ...item.data(),
+        docId: item.id
+    }));
+    
+    return photos;
 }
 
 export async function updateUserFollowing(docId:any, profileId:any, isFollowingProfile:any) {
@@ -94,4 +134,17 @@ export async function getSuggestedProfiles(userId:any) {
     return querySnapshot.docs.map((user:any) => (
         { ...user.data(), docId: user.id }
     )).filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
+}
+
+export async function isUserFollowingProfile(activeUsername:any, profileUserId:any) {
+    const db = getFirestore(app);
+    const q = query(collection(db, "users"), where("username", "==", activeUsername), where('following', 'array-contains', profileUserId));
+    const querySnapshot = await getDocs(q);
+
+    const [response = {}]:any = querySnapshot.docs.map((item) => ({
+        ...item.data(),
+        docId: item.id
+    }));
+    
+    return !!response.fullName;
 }

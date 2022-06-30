@@ -21,7 +21,7 @@ const Timeline:FC<any> = () => {
                     <Post key={content.docId} content={content} />
                 )
             ) : (
-                <p className="text-center text-2xl">Follow people to see photos!</p>
+                <p className="no-followers">Follow people to see photos!</p>
             )}
         </div>
     );

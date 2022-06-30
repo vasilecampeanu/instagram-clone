@@ -20,18 +20,21 @@ const Header:FC<any> = () => {
     return (
         <div className="header-inner-wrapper">
             <nav className="navbar">
-                <div className="logo">
+                <div className="insta-logo">
                     <Link to={ROUTES.DASHBOARD}>Instagram</Link>
                 </div>
                 {user ? (
-                    <>
-                        <div className="search">
+                    <div className="actions">
+                        <div className="left-actions">
+                            <div className="search">
+                            </div>
                         </div>
-                        <div className="actions">
-                            <Link to={ROUTES.DASHBOARD} arial-label="Home">
+                        <div className="right-actions">
+                            <Link className="home" to={ROUTES.DASHBOARD} arial-label="Home">
                                 <p>Dashboard</p>
                             </Link>
                             <button
+                                className="btnLogOut"
                                 type="button"
                                 title="Log Out"
                                 onClick={() => {
@@ -46,32 +49,29 @@ const Header:FC<any> = () => {
                             >
                                 Sign Out
                             </button>
-                            <div className="flex items-center cursor-pointer">
-                                <Link to={`/profile/${user.displayName}`}>
+                            <div className="profile-icon">
+                                <Link className="profile-photo" to={`/profile/${user.displayName}`}>
                                     <img
-                                        className="rounded-full h-8 w-8 flex"
                                         src={`/assets/scrimba/avatars/${user.displayName}.jpg`}
                                         alt={`${user.displayName} profile picture`}
                                     />
                                 </Link>
-                            </div>
+                            </div>    
                         </div>
-                    </>
+                    </div>
                 ) : (
-                    <>
-                        <div className="actions">
-                            <Link to={ROUTES.LOGIN}>
-                                <button>
-                                    Log In
-                                </button>
-                            </Link>
-                            <Link to={ROUTES.SIGN_UP}>
-                                <button>
-                                    Sign Up
-                                </button>
-                            </Link>
-                        </div>
-                    </>
+                    <div className="actions">
+                        <Link to={ROUTES.LOGIN}>
+                            <button>
+                                Log In
+                            </button>
+                        </Link>
+                        <Link to={ROUTES.SIGN_UP}>
+                            <button>
+                                Sign Up
+                            </button>
+                        </Link>
+                    </div>
                 )}
             </nav>
         </div>

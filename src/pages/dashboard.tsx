@@ -19,16 +19,16 @@ const Dashboard:FC<any> = () => {
                 <Header />
             </header>
             <main id="main" className="dashboard">
-            {user ? (
-                <>
-                    <Timeline />
-                    <Sidebar />
-                </>
-            ) : (
-                <>
-                    You need to be logged in to see this section!
-                </>
-            )}
+                {user ? (
+                    <>
+                        <Timeline />
+                        <Sidebar />
+                    </>
+                ) : (
+                    <>
+                        You need to be logged in to see this section!
+                    </>
+                )}
             </main>
         </div>
     )
