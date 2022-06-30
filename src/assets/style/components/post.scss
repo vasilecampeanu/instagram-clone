@@ -1,0 +1,165 @@
+.timeline-wrapper
+{
+    .article-post
+    {
+        margin-bottom: 20px;
+        
+        .post-header
+        {
+            height: 56px;
+            display: grid;
+            border: 1px solid #DBDBDB;
+            background-color: white;
+            border-radius: 10px 10px 0px 0px;
+    
+            .post-header-inner-wrapper
+            {
+                padding: 0px 15px;
+                align-self: center;
+                display: flex;
+                gap: 10px;
+    
+                .profile-photo
+                {
+                    align-self: center;
+    
+                    img
+                    {
+                        width: 42px;
+                        height: 42px;
+                        border-radius: 50%;
+                    }
+                }
+    
+                .username
+                {
+                    align-self: center;
+                    font-weight: bold;
+                }
+            }
+        }
+        
+        .photo
+        {
+            height: 588px;
+        }
+
+        footer
+        {
+            border: 1px solid #DBDBDB;
+            background-color: white;
+            border-radius: 0px 0px 10px 10px;
+
+            .post-user-actions-wrapper
+            {
+                display: grid;
+                padding: 0px 15px;
+        
+                .post-user-actions
+                {
+                    display: flex;
+                    gap: 10px;
+                    padding: 5px 0px;
+        
+                    svg
+                    {
+                        width: 28px;
+                        height: 28px;
+                        cursor: pointer;
+                    }
+                }
+                
+                .post-likes
+                {
+                    padding: 5px 0px;
+                }
+            }
+        
+            .post-user-info
+            {   
+                padding: 0px 15px;
+
+                .username
+                {
+                    font-weight: bold;
+                    color: #2B2B2B;
+                    margin-right: 7.5px;
+                }
+            }
+
+            .post-comment-section
+            {
+                .comment-list
+                {
+                    padding: 0px 15px;
+                    
+                    .show-all
+                    {
+                        font-weight: bold;
+                        font-size: 16px;
+                        padding: 5px 0px;
+                        color: #939393;
+                    }
+
+                    .username-link
+                    {
+                        text-decoration: none;
+                        font-weight: bold;
+                        margin-right: 7.5px;
+                        color: #2B2B2B;
+
+                        &:hover
+                        {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .post-date
+                    {
+                        font-size: 14px;
+                        text-transform: uppercase;
+                        padding: 5px 0px;
+                        color: #909090;
+                    }
+                }
+
+                .add-comment-section
+                {
+                    border-top: 1px solid #DBDBDB;
+
+                    .comment-section-form
+                    {
+                        padding: 0px 15px;
+
+                        form
+                        {
+                            display: grid;
+                            grid-template-columns: 1fr auto;
+                            
+                            input
+                            {
+                                padding: 7.5px 0px;
+                                border: none;
+                                
+                                &:focus
+                                {
+                                    outline: none;
+                                }
+                            }
+
+                            button
+                            {
+                                background-color: white;
+                                border: none;
+                                font-size: 16px;
+                                cursor: pointer;
+                                font-weight: bold;
+                                color: #2C95F6;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

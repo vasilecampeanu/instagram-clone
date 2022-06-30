@@ -6,22 +6,22 @@ import { formatDistance } from "date-fns";
 const Comments:FC<any> = ({ docId, comments: allComments, posted, commentInput }) => {
     const [comments, setComments] = useState(allComments)
     return (
-        <div className="comment-section">
+        <div className="post-comment-section">
             <div className="comment-list">
                 {comments.length >= 3 && (
-                    <p>
+                    <p className="show-all">
                         View all {comments.length} comments
                     </p>
                 )}
                 {comments.slice(0, 3).map((item:any) => (
-                    <p key={`${item.comment}-${item.displayName}`} className="mb-1">
-                        <Link to={`/profile/${item.displayName}`}>
+                    <p key={`${item.comment}-${item.displayName}`}>
+                        <Link className="username-link" to={`/profile/${item.displayName}`}>
                             <span className="display-name">{item.displayName}</span>
                         </Link>
                         <span>{item.comment}</span>
                     </p>
                 ))}
-                <p className="text-gray uppercase text-xs mt-2">
+                <p className="post-date">
                     {formatDistance(posted, new Date())} ago
                 </p>
             </div>
