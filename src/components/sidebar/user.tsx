@@ -9,18 +9,23 @@ const User:FC<any> = ({ username, fullName }) => {
         !username || !fullName ? (
             <Skeleton count={1} height={61} />
         ) : (
-            <Link to={`/profile/${username}`}>
-                <div>
-                    <img
-                        src={`assets/scrimba/avatars/${username}.jpg`}
-                        alt="My profile"
-                    />
+            <div className="sidebar-wrapper-user">
+                <Link className="sidebar-user" to={`/profile/${username}`}>
+                    <div className="user-photo">
+                        <img
+                            src={`assets/scrimba/avatars/${username}.jpg`}
+                            alt="My profile"
+                        />
+                    </div>
+                    <div className="user-details">
+                        <p className="username">{username}</p>
+                        <p className="full-name">{fullName}</p>
+                    </div>
+                </Link>
+                <div className="user-action">
+                    Switch user
                 </div>
-                <div>
-                    <p>{username}</p>
-                    <p>{fullName}</p>
-                </div>
-            </Link>
+            </div>
         )
     )
 }

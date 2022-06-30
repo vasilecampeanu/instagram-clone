@@ -9,7 +9,7 @@ const Sidebar:FC<any> = () => {
     } = useUser();
     
     return (
-        <div>
+        <div className="sidebar-wrapper">
             <User username={username} fullName={fullName} />
             <Suggestions userId={userId} />
         </div>

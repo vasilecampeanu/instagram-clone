@@ -14,23 +14,25 @@ const Dashboard:FC<any> = () => {
     }, []);
 
     return (
-        <div className="dashboard-wrapper">
+        <>
             <header id="header">
                 <Header />
             </header>
             <main id="main" className="dashboard">
-                {user ? (
-                    <>
-                        <Timeline />
-                        <Sidebar />
-                    </>
-                ) : (
-                    <>
-                        You need to be logged in to see this section!
-                    </>
-                )}
+                <div className="dashboard-wrapper">
+                    {user ? (
+                        <>
+                            <Timeline />
+                            <Sidebar />
+                        </>
+                    ) : (
+                        <>
+                            You need to be logged in to see this section!
+                        </>
+                    )}
+                </div>
             </main>
-        </div>
+        </>
     )
 }
 

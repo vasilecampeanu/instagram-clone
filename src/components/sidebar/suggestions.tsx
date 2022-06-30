@@ -19,11 +19,14 @@ const Suggestions:FC<any> = ({ userId }) => {
     return !profiles ? (
         <Skeleton count={1} height={150} className="mt-5" />
     ) : profiles.length > 0 ? (
-        <div>
-            <div>
-                <p>Suggestions for you</p>
+        <div className="suggestions-wrapper">
+            <div className="section-title">
+                <div className="title"><p>Suggestions for you</p></div>
+                <div className="user-action">
+                    <p>See all</p>
+                </div>
             </div>
-            <div>
+            <div className="sugestion-list">
                 {profiles.map((profile:any) => (
                     <SuggestedProfile
                         key={profile.docId}

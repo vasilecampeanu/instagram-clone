@@ -1,0 +1,165 @@
+main.dashboard
+{
+    .dashboard-wrapper
+    {
+        padding-top: 20px;
+
+        .sidebar-wrapper
+        {
+            top: 80px !important;
+            right: 0px;
+            height: calc(100vh - 80px);
+            position: sticky;
+
+            .sidebar-wrapper-user
+            {
+                display: grid;
+                grid-template-columns: 1fr auto;
+
+                .sidebar-user
+                {
+                    display: grid;
+                    grid-template-columns: auto 1fr;
+                    gap: 15px;
+                    text-decoration: none;
+
+                    .user-photo
+                    {
+                        img
+                        {
+                            width: 65px;
+                            height: 65px;
+                            border-radius: 50%;
+                            border: 1px solid #D4D4D4;
+                        }
+                    }
+                    
+                    .user-details
+                    {
+                        display: grid;
+                        align-content: center;
+
+                        .username
+                        {
+                            font-weight: bold;
+                            color: #262626;
+                            font-size: 18px;
+                        }
+
+                        .full-name
+                        {
+                            color: #8E8E8E;
+                            font-size: 16px;
+                        }
+                    }
+                }
+
+                .user-action
+                {
+                    display: grid;
+                    align-self: center;
+                    font-size: 14px;
+                    font-weight: bold;
+                    color: #2C95F6;
+                    cursor: pointer;
+                }
+            }
+
+            .suggestions-wrapper
+            {
+                .section-title
+                {
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+
+                    .title
+                    {
+                        display: flex;
+                        align-self: center;
+                        font-weight: bold;
+                    }
+
+                    .user-action
+                    {
+                        display: flex;
+                        align-self: center;
+                        font-size: 14px;
+                        font-weight: bold;
+                        color: #262626;
+                        padding: 20px 0px;
+                        
+                        p
+                        {
+                            cursor: pointer;
+                        }
+                    }
+                }
+
+                .sugestion-list
+                {
+                    .sugested-profile
+                    {
+                        display: grid;
+                        grid-template-columns: 1fr auto;
+                        margin-bottom: 10px;
+
+                        .profile-info
+                        {
+                            display: grid;
+                            grid-template-columns: auto 1fr;
+                            align-content: center;
+                            gap: 10px;
+
+                            a.photo
+                            {
+                                align-self: center;
+                                
+                                img
+                                {
+                                    width: 42px;
+                                    height: 42px;
+                                    border-radius: 50%;
+                                    border: 1px solid #D4D4D4;
+                                }
+                            }
+
+                            a
+                            {
+                                text-decoration: none;
+                                font-weight: bold;
+                                color: #262626 !important;
+                                font-size: 18px;
+
+                                &:hover
+                                {
+                                    text-decoration: underline;
+                                }
+                            }
+
+                            p
+                            {
+                                font-size: 16px;
+                                color: #8E8E8E;
+                            }
+                        }
+
+                        .profile-action
+                        {
+                            align-self: center;
+
+                            button
+                            {
+                                background-color: #FAFAFA;
+                                border: none;
+                                font-weight: bold;
+                                color: #3DA3F6;
+                                font-size: 14px;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

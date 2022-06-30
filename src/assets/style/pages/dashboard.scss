@@ -1,10 +1,12 @@
-.dashboard-wrapper
+main.dashboard
 {
-    background-color: red;
+    display: grid;
     
-    main.dashboard
+    .dashboard-wrapper
     {
+        justify-self: center;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 470px 319px;;
+        gap: 50px;
     }
 }

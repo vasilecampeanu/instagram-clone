@@ -14,17 +14,21 @@ const SuggestedProfile:FC<any> = ({ userDocId, username, profileId, userId }) =>
     }
     
     return !followed ? (
-        <div>
-            <div>
-                <img
-                    src={`/assets/scrimba/avatars/${username}.jpg`}
-                    alt={`Follow ${username}`}
-                />
-                <Link to={`/profile/${username}`}>
-                    <p>{username}</p>
+        <div className="sugested-profile">
+            <div className="profile-info">
+                <Link className="photo" to={`/profile/${username}`}>
+                    <img
+                        src={`/assets/scrimba/avatars/${username}.jpg`}
+                    />
                 </Link>
+                <div>
+                    <Link to={`/profile/${username}`}>
+                        {username}
+                    </Link>
+                    <p>New to instagram</p>
+                </div>
             </div>
-            <div>
+            <div className="profile-action">
                 <button
                     type="button"
                     onClick={handleFollowUser}
