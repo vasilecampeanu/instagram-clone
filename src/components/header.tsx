@@ -9,7 +9,10 @@ import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_wr
 
 const Header:FC<any> = () => {
     const { firebase } = useContext<any>(FirebaseContext);
-    const { user } = useContext<any>(UserContext);
+    
+    const user = useContext<any>(UserContext);
+
+    console.log(user);
 
     const navigate:any = useNavigate();
 

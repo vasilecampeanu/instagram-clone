@@ -6,7 +6,9 @@ import Timeline from '../components/timeline';
 import Sidebar from '../components/sidebar';
 
 const Dashboard:FC<any> = () => {
-    const { user } = useContext<any>(UserContext);
+    const user = useContext<any>(UserContext);
+
+    console.log(user);
 
     // Use effect hook
     useEffect(() => {

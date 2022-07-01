@@ -13,10 +13,12 @@ const PasswordForgotten:any = lazy(() => import ('./pages/password-forgotten'));
 const SignUp:any = lazy(() => import ('./pages/signup'));
 
 const App:FC = () => {
-    const { user } = useAuthenticationListener();
+    const {user} = useAuthenticationListener();
+    
+    console.log(user);
 
     return (
-        <UserContext.Provider value={{ user }}>
+        <UserContext.Provider value={ user }>
             <Router>
                 <Suspense fallback={ <p>Loading...</p> }>
                     <Routes>

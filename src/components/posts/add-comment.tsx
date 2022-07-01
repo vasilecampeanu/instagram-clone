@@ -3,15 +3,19 @@ import FirebaseContext from "../../db/firebase.context";
 import UserContext from "../../helpers/user.context";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
+import { User } from "firebase/auth";
 
 const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
     
     const [comment, setComment] = useState('');
     const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
-    const {
-        user: { displayName }
-    } = useContext(UserContext);
+    // const {
+    //     user: { displayName }
+    // } = useContext(UserContext);
+    
+    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const displayName = user?.displayName;
     
     const handleSubmitComment = (event:any) => {
         event.preventDefault();

@@ -5,12 +5,17 @@ import FirebaseContext from "../../db/firebase.context";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { arrayRemove, arrayUnion } from "firebase/firestore";
 import { FirebaseApp } from 'firebase/app';
+import { User } from "firebase/auth";
 
 const Actions:FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
-    const {
-        user: { uid: userId = '' }
-    } = useContext(UserContext);
-
+    // const {
+    //     user: { uid: userId = '' }
+    // } = useContext(UserContext);
+    
+    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const userId = user?.uid;
+    console.log(userId);
+    
     const [toggleLiked, setToggleLiked] = useState(likedPhoto);
     const [likes, setLikes] = useState(totalLikes);
     const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
