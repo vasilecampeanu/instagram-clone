@@ -15,8 +15,8 @@ header
 
         .navbar
         {
-            width: 975px;
-            height: 60px;
+            width: 825px;
+            height: 50px;
             display: grid;
             grid-template-columns: auto 1fr;
 
@@ -27,8 +27,8 @@ header
 
                 img
                 {
-                    width: 103px;
-                    height: 29px;
+                    width: 90px;
+                    height: 23px;
                 }
             }
 
@@ -45,12 +45,13 @@ header
                         input
                         {
                             width: 268px;
-                            height: 36px;
+                            height: 32px;
                             background-color: #EFEFEF;
                             border: none;
                             border-radius: 7.5px;
                             padding: 2.5px 10px;
                             margin-right: 100px;
+                            color: #8E8E8E;
                         }
 
                         input:focus
@@ -66,6 +67,13 @@ header
                     display: flex;
                     gap: 10px;
 
+                    svg
+                    {
+                        width: 22px;
+                        height: 22px;
+                    }
+                    
+
                     .home
                     {
                         align-self: center;
@@ -73,14 +81,24 @@ header
                         svg
                         {
                             color: #262626;
-                            
                         }
                     }
                     
                     .new-post
                     {
-                        align-self: center;
-                        cursor: pointer;
+                        display: flex;
+
+                        .new-post-btn
+                        {
+                            align-self: center;
+                            cursor: pointer;
+                            border: none;
+                            background: transparent;
+                        }
+
+                        .modal
+                        {
+                        }
                     }
 
                     .btnLogOut
@@ -109,7 +127,7 @@ header
 
 main
 {
-    padding-top: 60px !important;
+    padding-top: 50px !important;
 }
 
 main.login-page
