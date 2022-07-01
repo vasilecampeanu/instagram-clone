@@ -20,8 +20,8 @@ const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
     const [likes, setLikes] = useState(totalLikes);
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
-    const handleToggleLiked:any = async () => {
-        setToggleLiked((toggleLiked:any) => !toggleLiked);
+    const handleToggleLiked: any = async () => {
+        setToggleLiked((toggleLiked: any) => !toggleLiked);
         
         const db = getFirestore(firebase);
         const photos = doc(db, "photos", docId);
@@ -38,10 +38,10 @@ const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
         <div className="post-user-actions-wrapper">
             <div className="post-user-actions">
                 <svg
-                    onClick={() => handleToggleLiked((toggleLiked:any) => !toggleLiked)}
+                    onClick={() => handleToggleLiked((toggleLiked: any) => !toggleLiked)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                            handleToggleLiked((toggleLiked:any) => !toggleLiked);
+                            handleToggleLiked((toggleLiked: any) => !toggleLiked);
                         }
                     }}
                     className={`w-8 mr-4 select-none cursor-pointer ${

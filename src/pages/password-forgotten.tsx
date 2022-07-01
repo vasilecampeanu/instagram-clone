@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-const NotFound: FC<any> = () => {
+const NotFound: FC<{}> = () => {
     return (
         <p>Hello from Password Forgotten</p>
     )

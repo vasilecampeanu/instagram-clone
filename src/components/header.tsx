@@ -7,15 +7,16 @@ import UserContext from '../helpers/user.context';
 
 import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_written.png';
 import { FirebaseApp } from 'firebase/app';
+import { NavigateFunction } from 'react-router-dom';
 
-const Header: FC<any> = () => {
+const Header: FC<{}> = () => {
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
     const user: User | undefined = useContext<User | undefined>(UserContext);
 
     console.log(user);
 
-    const navigate: any = useNavigate();
+    const navigate:NavigateFunction = useNavigate();
 
     useEffect(() => {
         if (user) {

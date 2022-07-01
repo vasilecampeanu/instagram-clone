@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, FC } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavigateFunction, useNavigate } from 'react-router-dom';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 
 import * as ROUTES from '../constants/routes';
@@ -29,7 +29,7 @@ import { FirebaseApp } from 'firebase/app';
 
 showcase();
 
-const Login: FC<any> = () => {
+const Login: FC<{}> = () => {
     // Context hook
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
@@ -42,10 +42,10 @@ const Login: FC<any> = () => {
     const isInvalid: boolean = emailAddress === '' || password === '';
 
     // Navigate hook
-    const navigate: any = useNavigate();
+    const navigate:NavigateFunction = useNavigate();
 
     // Handle login
-    const handleLogin: any = async (event: any) => {
+    const handleLogin = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
 
@@ -57,7 +57,7 @@ const Login: FC<any> = () => {
             const user = userCredential.user;
             // console.log(user);
             navigate(ROUTES.DASHBOARD);
-        }).catch((error:any) => {
+        }).catch((error) => {
             setEmailAddress('');
             setPassword('');
             setError(error.message);

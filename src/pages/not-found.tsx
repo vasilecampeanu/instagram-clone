@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from 'react';
 
-const NotFound: FC<any> = () => {
+const NotFound: FC<{}> = () => {
     useEffect(() => {
         document.title = '404 - Not Found';
     });

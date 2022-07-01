@@ -17,7 +17,9 @@ import app from '../db/firebase.config';
 import { seedDatabase } from '../db/firebase.seed';
 import { FirebaseApp } from 'firebase/app';
 
-const SignUp: FC<any> = () => {
+import { NavigateFunction } from 'react-router-dom';
+
+const SignUp: FC<{}> = () => {
     // Context hook
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
@@ -32,10 +34,10 @@ const SignUp: FC<any> = () => {
     const isInvalid: boolean = emailAddress === '' || fullName === '' || username === '' || password === '';
 
     // Navigate hook
-    const navigate: any = useNavigate();
+    const navigate:NavigateFunction = useNavigate();
 
     // Handle signup
-    const handleSignUp = async (event:any) => {
+    const handleSignUp = async (event: { preventDefault: () => void; }) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
 

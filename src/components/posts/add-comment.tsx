@@ -16,7 +16,7 @@ const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
     const user: User | undefined = useContext<User | undefined>(UserContext);
     const displayName = user?.displayName;
     
-    const handleSubmitComment = (event:any) => {
+    const handleSubmitComment = (event: any) => {
         event.preventDefault();
         
         setComments([{ displayName, comment }, ...comments ]);

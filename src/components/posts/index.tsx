@@ -6,7 +6,7 @@ import Comments from './comments';
 import { FC, useRef } from 'react';
 
 const Post:FC<any> = ({ content }) => {
-    const commentInput:any|null = useRef(null);
+    const commentInput: any | null = useRef(null);
     const handleFocus = () => commentInput.current.focus();
     
     return (

@@ -6,8 +6,7 @@ import Header from '../components/header';
 import Timeline from '../components/timeline';
 import Sidebar from '../components/sidebar';
 
-
-const Dashboard: FC<any> = () => {
+const Dashboard: FC<{}> = () => {
     const user: User | undefined = useContext<User | undefined>(UserContext);
 
     console.log(user);
@@ -37,7 +36,7 @@ const Dashboard: FC<any> = () => {
                 </div>
             </main>
         </>
-    )
+    );
 }
 
 export default Dashboard;

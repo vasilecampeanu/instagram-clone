@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 
-const Modal:FC<any> = () => {
+const Modal:FC<{}> = () => {
     return(
         <>
         </>

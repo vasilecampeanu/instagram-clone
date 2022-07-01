@@ -5,14 +5,14 @@ import * as ROUTES from './constants/routes';
 import UserContext from './helpers/user.context';
 import useAuthenticationListener from './hooks/use-auth-listener';
 
-const Dashboard:any = lazy(() => import ('./pages/dashboard'));
-const Login:any = lazy(() => import ('./pages/login'));
-const NotFound:any = lazy(() => import ('./pages/not-found'));
-const Profile:any = lazy(() => import ('./pages/profile'));
-const PasswordForgotten:any = lazy(() => import ('./pages/password-forgotten'));
-const SignUp:any = lazy(() => import ('./pages/signup'));
+const Dashboard:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/dashboard'));
+const Login:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/login'));
+const NotFound:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/not-found'));
+const Profile:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/profile'));
+const PasswordForgotten:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/password-forgotten'));
+const SignUp:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/signup'));
 
-const App:FC = () => {
+const App:FC<{}> = () => {
     const {user} = useAuthenticationListener();
     
     console.log(user);

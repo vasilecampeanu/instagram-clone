@@ -1,5 +1,5 @@
 import { Console } from "console";
-import { FC } from "react";
+import { FC, Key } from "react";
 import Skeleton from 'react-loading-skeleton';
 
 const Photos:FC<any> = ({photos}) => {
@@ -13,7 +13,7 @@ const Photos:FC<any> = ({photos}) => {
                         ))}
                     </>
                 ) : photos && photos.length > 0 ? (
-                    photos && photos.map((photo:any) => (
+                    photos && photos.map((photo: { docId: Key | null | undefined; imageSrc: string | undefined; caption: string | undefined; }) => (
                         <div key={photo.docId}>
                             <img src={photo.imageSrc} alt={photo.caption} />
                         </div>
