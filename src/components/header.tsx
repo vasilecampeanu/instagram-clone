@@ -2,19 +2,20 @@ import React, { FC, useContext, useEffect } from 'react';
 import * as ROUTES from '../constants/routes';
 import FirebaseContext from '../db/firebase.context';
 import { Link, useNavigate } from 'react-router-dom';
-import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, updateProfile, signOut, User } from 'firebase/auth';
 import UserContext from '../helpers/user.context';
 
 import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_written.png';
+import { FirebaseApp } from 'firebase/app';
 
-const Header:FC<any> = () => {
-    const { firebase } = useContext<any>(FirebaseContext);
+const Header: FC<any> = () => {
+    const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
-    const user = useContext<any>(UserContext);
+    const user: User | undefined = useContext<User | undefined>(UserContext);
 
     console.log(user);
 
-    const navigate:any = useNavigate();
+    const navigate: any = useNavigate();
 
     useEffect(() => {
         if (user) {

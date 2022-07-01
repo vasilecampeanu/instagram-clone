@@ -1,12 +1,14 @@
 import React, { FC, useEffect, useContext } from 'react';
 import UserContext from '../helpers/user.context';
+import { User } from 'firebase/auth';
 
 import Header from '../components/header';
 import Timeline from '../components/timeline';
 import Sidebar from '../components/sidebar';
 
-const Dashboard:FC<any> = () => {
-    const user = useContext<any>(UserContext);
+
+const Dashboard: FC<any> = () => {
+    const user: User | undefined = useContext<User | undefined>(UserContext);
 
     console.log(user);
 

@@ -7,8 +7,7 @@ export default function useFollowedUsersPhotos() {
     const [photos, setPhotos] = useState<any[]>([]);
     
     // const { user: { uid: userId = '' } } = useContext(UserContext);
-    
-    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const user: User | undefined = useContext<User | undefined>(UserContext);
     const userId = user?.uid;
 
     useEffect(() => {

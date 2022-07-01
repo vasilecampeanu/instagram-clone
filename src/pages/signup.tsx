@@ -15,10 +15,11 @@ import googlePlay from '../assets/images/googlePlay.png';
 
 import app from '../db/firebase.config';
 import { seedDatabase } from '../db/firebase.seed';
+import { FirebaseApp } from 'firebase/app';
 
-const SignUp:FC<any> = () => {
+const SignUp: FC<any> = () => {
     // Context hook
-    const {firebase} = useContext<any>(FirebaseContext);
+    const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
     // State hooks
     const [emailAddress, setEmailAddress] = useState<string>('');
@@ -28,10 +29,10 @@ const SignUp:FC<any> = () => {
     const [error, setError] = useState<string>('');
 
     // Handle validation
-    const isInvalid:boolean = emailAddress === '' || fullName === '' || username === '' || password === '';
+    const isInvalid: boolean = emailAddress === '' || fullName === '' || username === '' || password === '';
 
     // Navigate hook
-    const navigate:any = useNavigate();
+    const navigate: any = useNavigate();
 
     // Handle signup
     const handleSignUp = async (event:any) => {

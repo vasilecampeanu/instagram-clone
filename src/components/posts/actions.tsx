@@ -7,18 +7,18 @@ import { arrayRemove, arrayUnion } from "firebase/firestore";
 import { FirebaseApp } from 'firebase/app';
 import { User } from "firebase/auth";
 
-const Actions:FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
+const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
+    // Old Version
     // const {
     //     user: { uid: userId = '' }
     // } = useContext(UserContext);
-    
-    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const user: User | undefined = useContext<User | undefined>(UserContext);
     const userId = user?.uid;
     console.log(userId);
     
     const [toggleLiked, setToggleLiked] = useState(likedPhoto);
     const [likes, setLikes] = useState(totalLikes);
-    const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
+    const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
     const handleToggleLiked:any = async () => {
         setToggleLiked((toggleLiked:any) => !toggleLiked);
@@ -31,7 +31,7 @@ const Actions:FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
             likes: toggleLiked ? arrayRemove(userId) : arrayUnion(userId)
         });
          
-        setLikes((likes:any) => (toggleLiked ? likes - 1 : likes + 1));
+        setLikes((likes: any) => (toggleLiked ? likes - 1 : likes + 1));
     }
 
     return (

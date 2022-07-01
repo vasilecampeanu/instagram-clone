@@ -5,11 +5,10 @@ import { getUserByUserId } from '../db/firebase.api';
 import { User } from 'firebase/auth';
 
 const useUser = () => {
-    let userObj:any = {};
+    let userObj: any = {};
     const [activeUser, setActiveUser] = useState(userObj);
     
-    // const { user } = useContext(UserContext);
-    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const user: User | undefined = useContext<User | undefined>(UserContext);
     
     useEffect(() => {
         const getUserObjByUserId = async () => {

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export {}
 
-const User:FC<any> = ({ username, fullName }) => {
+const User: FC<any> = ({ username, fullName }) => {
     return (
         !username || !fullName ? (
             <Skeleton count={1} height={61} />

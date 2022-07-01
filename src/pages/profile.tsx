@@ -5,7 +5,7 @@ import { getUserByUsername } from '../db/firebase.api';
 import Header from '../components/header';
 import UserProfile from '../components/profile';
 
-const Profile:FC<any> = () => {
+const Profile: FC<any> = () => {
     const { username } = useParams();
     const [userExists, setUserExists] = useState<any>(undefined);
     const navigate = useNavigate();

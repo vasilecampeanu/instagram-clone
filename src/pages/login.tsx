@@ -25,12 +25,13 @@ import { seedDatabase } from '../db/firebase.seed';
 // seedDatabase(app);
 
 import { showcase } from './vanilajs';
+import { FirebaseApp } from 'firebase/app';
 
 showcase();
 
-const Login:FC<any> = () => {
+const Login: FC<any> = () => {
     // Context hook
-    const { firebase } = useContext<any>(FirebaseContext);
+    const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
     // State hooks
     const [emailAddress, setEmailAddress] = useState<string>('');
@@ -38,13 +39,13 @@ const Login:FC<any> = () => {
     const [error, setError] = useState<string>('');
 
     // Handle validation
-    const isInvalid:boolean = emailAddress === '' || password === '';
+    const isInvalid: boolean = emailAddress === '' || password === '';
 
     // Navigate hook
-    const navigate:any = useNavigate();
+    const navigate: any = useNavigate();
 
     // Handle login
-    const handleLogin:any = async (event:any) => {
+    const handleLogin: any = async (event: any) => {
         event.preventDefault();
         const authentication = getAuth(firebase);
 

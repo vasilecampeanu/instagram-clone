@@ -8,13 +8,12 @@ import { User } from "firebase/auth";
 const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
     
     const [comment, setComment] = useState('');
-    const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
+    const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
     // const {
     //     user: { displayName }
     // } = useContext(UserContext);
-    
-    const user:User | undefined = useContext<User | undefined>(UserContext);
+    const user: User | undefined = useContext<User | undefined>(UserContext);
     const displayName = user?.displayName;
     
     const handleSubmitComment = (event:any) => {
