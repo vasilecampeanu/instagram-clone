@@ -3,7 +3,14 @@ import AddComment from "./add-comment";
 import { Link } from "react-router-dom";
 import { formatDistance } from "date-fns";
 
-const Comments:FC<any> = ({ docId, comments: allComments, posted, commentInput }) => {
+interface Props {
+    docId: string;
+    comments: any;
+    posted: number | Date;
+    commentInput: string;
+}
+
+const Comments:FC<Props> = ({ docId, comments: allComments, posted, commentInput }) => {
     const [comments, setComments] = useState(allComments)
     return (
         <div className="post-comment-section">

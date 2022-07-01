@@ -3,7 +3,7 @@ import useUser from "../../hooks/use-user";
 import Suggestions from "./suggestions";
 import User from "./user";
 
-const Sidebar: FC<any> = () => {
+const Sidebar: FC<{}> = () => {
     const { 
         user: { fullName, username, userId } 
     } = useUser();

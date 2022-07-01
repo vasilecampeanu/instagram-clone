@@ -5,9 +5,16 @@ import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
 import { FirebaseApp } from "firebase/app";
 import { User } from "firebase/auth";
 
-const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
+interface Props {
+    docId: string;
+    comments: string[]; // Type 'string' can only be iterated through when using the '--downlevelIteration' flag or with a '--target' of 'es2015' or higher.ts(2802)
+    setComments: ([]) => void;
+    commentInput: string;
+}
+
+const AddComment:FC<Props> = ({ docId, comments, setComments, commentInput }) => {
     
-    const [comment, setComment] = useState('');
+    const [comment, setComment] = useState<string>('');
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
     // const {
@@ -16,11 +23,12 @@ const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
     const user: User | undefined = useContext<User | undefined>(UserContext);
     const displayName = user?.displayName;
     
-    const handleSubmitComment = (event: any) => {
+    const handleSubmitComment = (event: React.SyntheticEvent) => {
         event.preventDefault();
         
+        // console.log(comments);
+
         setComments([{ displayName, comment }, ...comments ]);
-        
         setComment('');
         
         const db = getFirestore(firebase);

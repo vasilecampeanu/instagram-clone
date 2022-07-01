@@ -1,6 +1,10 @@
 import { FC } from "react";
 
-const Header:FC<any> = ({ username }) => {
+interface Props {
+    username: string
+}
+
+const Header:FC<Props> = ({ username }) => {
     return (
         <div className="post-header">
             <div className="post-header-inner-wrapper">

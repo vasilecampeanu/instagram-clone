@@ -2,7 +2,7 @@ import { Console } from "console";
 import { FC, Key } from "react";
 import Skeleton from 'react-loading-skeleton';
 
-const Photos:FC<any> = ({photos}) => {
+const Photos:FC<any> = ({ photos }) => {
     return (
         <div className="gallery">
             <div className="gallery-inner-layer">

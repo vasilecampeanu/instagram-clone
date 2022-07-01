@@ -7,7 +7,14 @@ import { arrayRemove, arrayUnion } from "firebase/firestore";
 import { FirebaseApp } from 'firebase/app';
 import { User } from "firebase/auth";
 
-const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
+interface Props {
+    docId: string;
+    totalLikes: number;
+    likedPhoto: boolean;
+    handleFocus: () => void;
+}
+
+const Actions: FC<Props> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
     // Old Version
     // const {
     //     user: { uid: userId = '' }
@@ -16,12 +23,12 @@ const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
     const userId = user?.uid;
     console.log(userId);
     
-    const [toggleLiked, setToggleLiked] = useState(likedPhoto);
-    const [likes, setLikes] = useState(totalLikes);
+    const [toggleLiked, setToggleLiked] = useState<boolean>(likedPhoto);
+    const [likes, setLikes] = useState<number>(totalLikes);
     const firebase: FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
-    const handleToggleLiked: any = async () => {
-        setToggleLiked((toggleLiked: any) => !toggleLiked);
+    const handleToggleLiked = async (toggled:boolean) => {
+        setToggleLiked((toggleLiked: boolean) => !toggleLiked);
         
         const db = getFirestore(firebase);
         const photos = doc(db, "photos", docId);
@@ -31,17 +38,17 @@ const Actions: FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
             likes: toggleLiked ? arrayRemove(userId) : arrayUnion(userId)
         });
          
-        setLikes((likes: any) => (toggleLiked ? likes - 1 : likes + 1));
+        setLikes((likes: number) => (toggleLiked ? likes - 1 : likes + 1));
     }
 
     return (
         <div className="post-user-actions-wrapper">
             <div className="post-user-actions">
                 <svg
-                    onClick={() => handleToggleLiked((toggleLiked: any) => !toggleLiked)}
+                    onClick={() => handleToggleLiked(!toggleLiked)}
                     onKeyDown={(e) => {
                         if (e.key === 'Enter') {
-                            handleToggleLiked((toggleLiked: any) => !toggleLiked);
+                            handleToggleLiked(!toggleLiked);
                         }
                     }}
                     className={`w-8 mr-4 select-none cursor-pointer ${
