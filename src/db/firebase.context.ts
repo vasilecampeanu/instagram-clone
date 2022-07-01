@@ -1,5 +1,7 @@
-import { createContext } from 'react'
+import { FirebaseApp } from 'firebase/app';
+import { createContext } from 'react';
+import app from '../db/firebase.config';
 
 // TODO: const FirebaseContext:FirebaseApp|undefined = createContext<FirebaseApp | undefined>(undefined);
-const FirebaseContext:any = createContext<any|null>(null);
+const FirebaseContext:React.Context<FirebaseApp | undefined> = createContext<typeof app | undefined>(undefined);
 export default FirebaseContext;

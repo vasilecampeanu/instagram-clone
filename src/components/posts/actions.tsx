@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import FirebaseContext from "../../db/firebase.context";
 import { getFirestore, updateDoc, doc } from "firebase/firestore";
 import { arrayRemove, arrayUnion } from "firebase/firestore";
+import { FirebaseApp } from 'firebase/app';
 
 const Actions:FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
     const {
@@ -12,7 +13,7 @@ const Actions:FC<any> = ({ docId, totalLikes, likedPhoto, handleFocus }) => {
 
     const [toggleLiked, setToggleLiked] = useState(likedPhoto);
     const [likes, setLikes] = useState(totalLikes);
-    const { firebase } = useContext(FirebaseContext);
+    const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
 
     const handleToggleLiked:any = async () => {
         setToggleLiked((toggleLiked:any) => !toggleLiked);

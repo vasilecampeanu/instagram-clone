@@ -2,11 +2,12 @@ import { FC, useState, useContext } from "react";
 import FirebaseContext from "../../db/firebase.context";
 import UserContext from "../../helpers/user.context";
 import { getFirestore, doc, updateDoc, arrayUnion } from "firebase/firestore";
+import { FirebaseApp } from "firebase/app";
 
 const AddComment:FC<any> = ({ docId, comments, setComments, commentInput }) => {
     
     const [comment, setComment] = useState('');
-    const { firebase, FieldValue } = useContext(FirebaseContext);
+    const firebase:FirebaseApp | undefined = useContext<FirebaseApp | undefined>(FirebaseContext);
     
     const {
         user: { displayName }
