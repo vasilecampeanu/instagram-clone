@@ -1,6 +1,6 @@
 import { FC, useEffect, useReducer } from "react";
 import { getUserByUsername, getUserPhotosByUsername } from "../../db/firebase.api";
-import Header from "../posts/header";
+import Header from "./header";
 import Photos from "./photos";
 
 const reducer = (state: any, newState: any) => ({ ...state, ...newState });

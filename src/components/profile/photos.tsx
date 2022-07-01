@@ -3,9 +3,7 @@ import { FC } from "react";
 import Skeleton from 'react-loading-skeleton';
 
 const Photos:FC<any> = ({photos}) => {
-    console.log("Hello world from profile photos!");
-    console.log(photos);
-    return(
+    return (
         <div className="gallery">
             <div className="gallery-inner-layer">
                 {!photos ? (

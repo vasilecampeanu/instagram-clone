@@ -77,6 +77,12 @@ header
                         }
                     }
                     
+                    .new-post
+                    {
+                        align-self: center;
+                        cursor: pointer;
+                    }
+
                     .btnLogOut
                     {
                         background-color: white;
@@ -107,6 +113,11 @@ main
 }
 
 main.login-page
+{
+    padding-top: 0px !important;
+}
+
+main.signup
 {
     padding-top: 0px !important;
 }

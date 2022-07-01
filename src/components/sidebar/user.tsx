@@ -23,7 +23,7 @@ const User:FC<any> = ({ username, fullName }) => {
                     </div>
                 </Link>
                 <div className="user-action">
-                    Switch user
+                    Switch
                 </div>
             </div>
         )
