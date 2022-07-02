@@ -28,6 +28,7 @@ const UserProfile:FC<Props> = ({ username }) => {
             
             dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
+
         getProfileInfoAndPhotos();
     }, [username]);
 

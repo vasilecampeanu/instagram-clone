@@ -8,7 +8,7 @@ export default function useFollowedUsersPhotos() {
     
     // const { user: { uid: userId = '' } } = useContext(UserContext);
     const user: User | undefined = useContext<User | undefined>(UserContext);
-    const userId = user?.uid;
+    const userId:string | undefined = user?.uid;
 
     useEffect(() => {
         async function getTimelinePhotos() {
@@ -23,7 +23,7 @@ export default function useFollowedUsersPhotos() {
             }
         }
 
-        if (userId != '') {
+        if (userId !== '') {
             getTimelinePhotos();
         }
     }, [userId]);

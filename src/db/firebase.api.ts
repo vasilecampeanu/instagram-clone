@@ -1,6 +1,7 @@
 // https://softauthor.com/firebase-firestore-add-document-data-using-adddoc/
 
-import { getFirestore, query, collection, where, getDocs, doc, updateDoc, arrayRemove, arrayUnion, limit } from 'firebase/firestore';
+import { User } from 'firebase/auth';
+import { getFirestore, query, collection, where, getDocs, doc, updateDoc, arrayRemove, arrayUnion, limit, QuerySnapshot, DocumentData } from 'firebase/firestore';
 import app from './firebase.config';
 
 export const doesUsernameExist = async (username:string) => {
@@ -17,7 +18,7 @@ export const doesUsernameExist = async (username:string) => {
     return querySnapshot.docs.length > 0;
 }
 
-export const getUserByUserId:any = async (userId:any) => {
+export const getUserByUserId:any = async (userId:string) => {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
@@ -30,7 +31,7 @@ export const getUserByUserId:any = async (userId:any) => {
     return user;
 }
 
-export const getUserByUsername:any = async (username:any) => {
+export const getUserByUsername:any = async (username:string) => {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
@@ -43,8 +44,7 @@ export const getUserByUsername:any = async (username:any) => {
     return user;
 }
 
-
-export async function getUserFollowedPhotos(userId:any, followingUserIds:any) {
+export async function getUserFollowedPhotos(userId:string | undefined, followingUserIds:string) {
     const db = getFirestore(app);
     const q = query(collection(db, "photos"), where("userId", "in", followingUserIds));
     const querySnapshot = await getDocs(q);
@@ -69,25 +69,25 @@ export async function getUserFollowedPhotos(userId:any, followingUserIds:any) {
     return photosWithUserDetails;
 }
 
-export async function getUserIdByUsername(username:any) {
+export async function getUserIdByUsername(username:string) {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("username", "==", username));
     const querySnapshot = await getDocs(q);
         
-    const [{ userId = null }] = querySnapshot.docs.map((item:any) => ({
+    const [{ userId = null }] = querySnapshot.docs.map((item) => ({
         ...item.data(),
     }));
     
     return userId;
 }
 
-export async function getUserPhotosByUsername(username:any) {
+export async function getUserPhotosByUsername(username:string) {
     const userId = await getUserIdByUsername(username);
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
         
-    const photos = querySnapshot.docs.map((item:any) => ({
+    const photos = querySnapshot.docs.map((item) => ({
         ...item.data(),
         docId: item.id
     }));
@@ -95,7 +95,7 @@ export async function getUserPhotosByUsername(username:any) {
     return photos;
 }
 
-export async function updateUserFollowing(docId:any, profileId:any, isFollowingProfile:any) {
+export async function updateUserFollowing(docId:string, profileId:string, isFollowingProfile:boolean) {
     const db = getFirestore(app);
     const photos = doc(db, "users", docId);
 
@@ -105,7 +105,7 @@ export async function updateUserFollowing(docId:any, profileId:any, isFollowingP
     });
 }
 
-export async function updateFollowedUserFollowers(docId:any, followingUserId:any, isFollowingProfile:any) {
+export async function updateFollowedUserFollowers(docId:string, followingUserId:string, isFollowingProfile:boolean) {
     const db = getFirestore(app);
     const photos = doc(db, "users", docId);
 
@@ -116,17 +116,17 @@ export async function updateFollowedUserFollowers(docId:any, followingUserId:any
 }
 
 export async function toggleFollow(
-    isFollowingProfile:any,
-    activeUserDocId:any,
-    profileDocId:any,
-    profileId:any,
-    followingUserId:any
+    isFollowingProfile:boolean,
+    activeUserDocId:string,
+    profileDocId:string,
+    profileId:string,
+    followingUserId:string
 ) {
     await updateUserFollowing(activeUserDocId, profileId, isFollowingProfile);
     await updateFollowedUserFollowers(profileDocId, followingUserId, isFollowingProfile);
 }
 
-export async function getSuggestedProfiles(userId:any) {
+export async function getSuggestedProfiles(userId:string) {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), limit(10));
     const querySnapshot = await getDocs(q);
@@ -136,7 +136,7 @@ export async function getSuggestedProfiles(userId:any) {
     )).filter((profile) => profile.userId !== userId && !following.includes(profile.userId));
 }
 
-export async function isUserFollowingProfile(activeUsername:any, profileUserId:any) {
+export async function isUserFollowingProfile(activeUsername:string, profileUserId:string) {
     const db = getFirestore(app);
     const q = query(collection(db, "users"), where("username", "==", activeUsername), where('following', 'array-contains', profileUserId));
     const querySnapshot = await getDocs(q);
