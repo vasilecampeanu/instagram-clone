@@ -25,7 +25,7 @@ const UserProfile:FC<Props> = ({ username }) => {
         async function getProfileInfoAndPhotos() {
             const [{ ...user }] = await getUserByUsername(username);
             const photos = await getUserPhotosByUsername(username);
-            
+            console.log(photos);
             dispatch({ profile: user, photosCollection: photos, followerCount: user.followers.length });
         }
 

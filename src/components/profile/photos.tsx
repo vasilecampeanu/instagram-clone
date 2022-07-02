@@ -7,6 +7,9 @@ interface Props {
 }
 
 const Photos:FC<Props> = ({ photos }) => {
+    console.log("Hello world from photos component!");
+    console.log({photos});
+
     return (
         <div className="gallery">
             <div className="gallery-inner-layer">

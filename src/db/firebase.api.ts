@@ -84,7 +84,7 @@ export async function getUserIdByUsername(username:string) {
 export async function getUserPhotosByUsername(username:string) {
     const userId = await getUserIdByUsername(username);
     const db = getFirestore(app);
-    const q = query(collection(db, "users"), where("userId", "==", userId));
+    const q = query(collection(db, "photos"), where("userId", "==", userId));
     const querySnapshot = await getDocs(q);
         
     const photos = querySnapshot.docs.map((item) => ({
