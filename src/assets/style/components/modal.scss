@@ -1,0 +1,24 @@
+.modal
+{
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: grid;
+
+    .btnClose
+    {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+    }
+
+    .modal-content
+    {
+        background-color: white;
+        justify-self: center;
+        align-self: center;
+    }
+}
