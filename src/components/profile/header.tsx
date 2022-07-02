@@ -3,7 +3,15 @@ import Skeleton from "react-loading-skeleton";
 import { isUserFollowingProfile, toggleFollow } from "../../db/firebase.api";
 import useUser from "../../hooks/use-user";
 
-const Header:FC<any> = ({ 
+interface Props {
+    photosCount: number;
+    followerCount: number,
+    setFollowerCount: ({}) => void; // TODO: This may cause errors!
+    username: string;
+    profile: any;
+}
+
+const Header:FC<Props> = ({ 
         photosCount,
         followerCount: followers,
         setFollowerCount,

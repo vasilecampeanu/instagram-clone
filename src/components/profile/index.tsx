@@ -11,7 +11,11 @@ const initialState = {
     followerCount: 0
 };
 
-const UserProfile:FC<any> = ({ username }) => {
+interface Props {
+    username: string;
+}
+
+const UserProfile:FC<Props> = ({ username }) => {
     const [{ profile, photosCollection, followerCount }, dispatch] = useReducer(
         reducer,
         initialState

@@ -5,7 +5,11 @@ import Footer from './footer';
 import Comments from './comments';
 import { FC, useRef } from 'react';
 
-const Post:FC<any> = ({ content }) => {
+interface Props {
+    content: any;
+}
+
+const Post:FC<Props> = ({ content }) => {
     const commentInput: any | null = useRef(null);
     const handleFocus = () => commentInput.current.focus();
     

@@ -1,6 +1,12 @@
 import { FC } from "react";
 
-const Footer:FC<any> = ({ caption, username }) => {
+interface Props
+{
+    caption:string;
+    username:string;
+}
+
+const Footer:FC<Props> = ({ caption, username }) => {
     return (
         <div className="post-user-info">
             <span className="username">{username}</span>

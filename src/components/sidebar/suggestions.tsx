@@ -3,12 +3,16 @@ import { getSuggestedProfiles } from "../../db/firebase.api";
 import Skeleton from "react-loading-skeleton";
 import SuggestedProfile from "./suggested-profile";
 
-const Suggestions:FC<any> = ({ userId }) => {
+interface Props {
+    userId: string
+}
+
+const Suggestions:FC<Props> = ({ userId }) => {
     const [profiles, setProfiles] = useState<any>(null);
     
     useEffect(() => {
         async function suggestedProfiles() {
-            const response:any = await getSuggestedProfiles(userId);
+            const response = await getSuggestedProfiles(userId);
             setProfiles(response);
         }
         if (userId) {
@@ -27,7 +31,7 @@ const Suggestions:FC<any> = ({ userId }) => {
                 </div>
             </div>
             <div className="sugestion-list">
-                {profiles.map((profile:any) => (
+                {profiles.map((profile: { docId: string; username: string; userId: string; }) => (
                     <SuggestedProfile
                         key={profile.docId}
                         userDocId={profile.docId}

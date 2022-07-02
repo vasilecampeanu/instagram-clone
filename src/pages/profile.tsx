@@ -7,7 +7,7 @@ import UserProfile from '../components/profile';
 
 const Profile: FC<{}> = () => {
     const { username } = useParams();
-    const [userExists, setUserExists] = useState<any>(undefined);
+    const [userExists, setUserExists] = useState<boolean | undefined>(undefined);
     const navigate = useNavigate();
     
     useEffect(() => {
@@ -29,7 +29,7 @@ const Profile: FC<{}> = () => {
                 <Header />
             </header>
             <main id="main">
-                <UserProfile username={username} />
+                <UserProfile username={username || ''} />
             </main>
         </div>
     ) : null;
