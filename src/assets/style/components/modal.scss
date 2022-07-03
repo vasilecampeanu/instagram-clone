@@ -10,15 +10,108 @@
 
     .btnClose
     {
+        border: none;
+        background: transparent;
         position: absolute;
         top: 20px;
         right: 20px;
+        color: #FFFFFF;
+        cursor: pointer;
     }
 
     .modal-content
     {
+        width: 608px;
+        height: 651px;
         background-color: white;
+        border-bottom: 2px solid #DBDBDB;
         justify-self: center;
         align-self: center;
+        border-radius: 10px;
+
+        .modal-header
+        {
+            height: 42px;
+            border-bottom: 1px solid #DBDBDB;
+            display: flex;
+            justify-content: center;
+
+            p
+            {
+                align-self: center;
+                font-weight: bold;
+            }
+        }
+
+        .modal-body
+        {
+            display: grid;
+            justify-content: center;
+            align-content: center;
+            height: calc(651px - 42px);
+
+            .image-selected
+            {
+                height: calc(651px - 42px);
+                display: grid;
+                grid-template-rows: 1fr auto;
+                width: 608px !important;
+
+                img
+                {
+                    height: calc(651px - 42px - 35px);
+                    width: 608px !important;
+                }
+
+                .actions
+                {
+                    display: flex;
+                    justify-content: end;
+                    border-top: 1px solid #DBDBDB;
+                    width: 100%;
+                    padding: 5px;
+                    
+                    button
+                    {
+                        border: none;
+                        margin-left: 10px;
+
+                        cursor: pointer;
+                        background-color: #0095F6;
+                        color: #FFFFFF;
+                        font-weight: bold;
+                        padding: 2.5px 5px;
+                        border-radius: 5px;
+                        font-size: 13px;
+                    }
+                }
+            }
+
+            label 
+            {
+                cursor: pointer;
+                background-color: #0095F6;
+                color: #FFFFFF;
+                font-weight: bold;
+                padding: 2.5px 5px;
+                border-radius: 5px;
+                margin-top: 20px;
+                font-size: 13px;
+            }
+            
+            svg
+            {
+                justify-self: center;
+                width: 96px !important;
+                height: 77px !important;
+            }
+
+            #upload-photo 
+            {
+                opacity: 0;
+                position: absolute;
+                z-index: -1;
+            }
+        }
     }
 }
