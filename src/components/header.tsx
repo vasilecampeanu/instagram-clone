@@ -8,7 +8,6 @@ import UserContext from '../helpers/user.context';
 import instagram_logo_hand_written from '../assets/images/instagram_logo_hand_written.png';
 import { FirebaseApp } from 'firebase/app';
 import { NavigateFunction } from 'react-router-dom';
-
 import Modal from './modal';
 
 const Header: FC<{}> = () => {

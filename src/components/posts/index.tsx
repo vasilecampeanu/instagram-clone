@@ -13,6 +13,8 @@ const Post:FC<Props> = ({ content }) => {
     const commentInput: any | null = useRef(null);
     const handleFocus = () => commentInput.current.focus();
     
+    console.log(content.imageSrc);
+
     return (
         <article className='article-post'>
             <Header username={content.username} />

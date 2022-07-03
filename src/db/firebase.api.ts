@@ -1,7 +1,8 @@
 // https://softauthor.com/firebase-firestore-add-document-data-using-adddoc/
 
+import { async } from '@firebase/util';
 import { User } from 'firebase/auth';
-import { getFirestore, query, collection, where, getDocs, doc, updateDoc, arrayRemove, arrayUnion, limit, QuerySnapshot, DocumentData } from 'firebase/firestore';
+import { getFirestore, query, collection, where, getDocs, doc, updateDoc, arrayRemove, arrayUnion, limit, QuerySnapshot, DocumentData, addDoc } from 'firebase/firestore';
 import app from './firebase.config';
 
 export const doesUsernameExist = async (username:string) => {
@@ -147,4 +148,24 @@ export async function isUserFollowingProfile(activeUsername:string, profileUserI
     }));
     
     return !!response.fullName;
+}
+
+export async function createPost(app:any, userId:string | undefined, photoId: number, photoName: string) {
+    const db = getFirestore(app);
+    const dbRefPhotos = collection(db, "photos");
+    addDoc(dbRefPhotos, {
+        photoId: photoId,
+        userId: `${userId}`,
+        imageSrc: `/assets/scrimba/users/posts/${photoName}`,
+        caption: 'This is just a regullar test!',
+        likes: [],
+        comments: [],
+        userLatitude: '45.9432°',
+        userLongitude: '24.9668°',
+        dateCreated: Date.now()
+    }).then(docRef => {
+        console.log("Document has been added successfully");
+    }).catch(error => {
+        console.log(error);
+    });
 }
