@@ -77,4 +77,34 @@
             }
         }
     }
+
+    .gallery
+    {
+        justify-self: center;
+        width: 825px;
+
+        .gallery-inner-layer
+        {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+
+            img
+            {
+                height: 276px !important;
+                cursor: pointer;
+                width: 100%;
+            }
+        }
+        
+        .empty-gallery
+        {
+            display: grid;
+            p
+            {
+                font-size: 28px;
+                justify-self: center;
+            }
+        }
+    }
 }
