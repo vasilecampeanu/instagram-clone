@@ -98,9 +98,9 @@ export async function getUserPhotosByUsername(username:string) {
 
 export async function updateUserFollowing(docId:string, profileId:string, isFollowingProfile:boolean) {
     const db = getFirestore(app);
-    const photos = doc(db, "users", docId);
+    const users = doc(db, "users", docId);
 
-    await updateDoc(photos, {
+    await updateDoc(users, {
         // TODO: Look into this. It seems to work but may cause some unexpected errors.
         following: isFollowingProfile ? arrayRemove(profileId) : arrayUnion(profileId)
     });
@@ -108,11 +108,11 @@ export async function updateUserFollowing(docId:string, profileId:string, isFoll
 
 export async function updateFollowedUserFollowers(docId:string, followingUserId:string, isFollowingProfile:boolean) {
     const db = getFirestore(app);
-    const photos = doc(db, "users", docId);
+    const users = doc(db, "users", docId);
 
-    await updateDoc(photos, {
+    await updateDoc(users, {
         // TODO: Look into this. It seems to work but may cause some unexpected errors.
-        following: isFollowingProfile ? arrayRemove(followingUserId) : arrayUnion(followingUserId)
+        followers: isFollowingProfile ? arrayRemove(followingUserId) : arrayUnion(followingUserId)
     });
 }
 
