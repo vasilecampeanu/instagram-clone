@@ -9,7 +9,6 @@ const Dashboard:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./
 const Login:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/login'));
 const NotFound:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/not-found'));
 const Profile:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/profile'));
-const PasswordForgotten:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/password-forgotten'));
 const SignUp:React.LazyExoticComponent<React.FC<{}>> = lazy(() => import ('./pages/signup'));
 
 const App:FC<{}> = () => {
@@ -25,7 +24,6 @@ const App:FC<{}> = () => {
                         <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
                         <Route path={ROUTES.LOGIN} element={<Login />} />
                         <Route path={ROUTES.PROFILE} element={<Profile />} />
-                        <Route path={ROUTES.PASSWORD_FORGOTTEN} element={<PasswordForgotten />} />
                         <Route path={ROUTES.SIGN_UP} element={<SignUp />} />
                         <Route path='*' element={<NotFound />} />
                     </Routes>

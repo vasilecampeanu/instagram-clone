@@ -1,4 +1,5 @@
 import { FC } from "react";
+import { Link } from "react-router-dom";
 
 interface Props {
     username: string
@@ -16,7 +17,7 @@ const Header:FC<Props> = ({ username }) => {
                     />
                 </div>
                 <div className="username">
-                    <p>{username}</p>
+                    <Link className="profile-photo" to={`/profile/${username}`}>{username}</Link>
                 </div>
             </div>
         </div>

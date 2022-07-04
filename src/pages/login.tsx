@@ -120,7 +120,7 @@ const Login: FC<{}> = () => {
                                 <p>Log in with Facebook</p>
                             </div>
                             <div className="password-forgotten">
-                                <Link to={ROUTES.PASSWORD_FORGOTTEN}>Forgotten your password?</Link>
+                                <a href="">Forgotten your password?</a>
                             </div>
                         </div>
                         <div className="signup">
