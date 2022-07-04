@@ -34,14 +34,16 @@ const UserProfile:FC<Props> = ({ username }) => {
 
     return(
         <>
-            <Header 
-                photosCount={photosCollection ? photosCollection.length : 0}
-                profile={profile}
-                followerCount={followerCount}
-                setFollowerCount={dispatch}
-                username={username}
-            />
-            <Photos photos={photosCollection} />
+            <div className="profile-wrapper">
+                <Header 
+                    photosCount={photosCollection ? photosCollection.length : 0}
+                    profile={profile}
+                    followerCount={followerCount}
+                    setFollowerCount={dispatch}
+                    username={username}
+                />
+                <Photos photos={photosCollection} />
+            </div>
         </>
     )
 }
