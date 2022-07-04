@@ -86,7 +86,7 @@ const Header: FC<{}> = () => {
                         </div>
                     </div>
                 ) : (
-                    <div className="actions">
+                    <div className={`actions ${user ? "login" : "logout"}`}>
                         <Link to={ROUTES.LOGIN}>
                             <button>
                                 Log In

@@ -6,7 +6,13 @@ main.dashboard
     {
         justify-self: center;
         display: grid;
-        grid-template-columns: 420px 290px;;
+        grid-template-columns: 420px 290px;
         gap: 25px;
+
+        &.logout
+        {
+            grid-template-columns: 1fr;
+            font-size: 22px;
+        }
     }
 }

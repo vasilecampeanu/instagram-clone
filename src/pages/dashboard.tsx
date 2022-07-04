@@ -22,7 +22,7 @@ const Dashboard: FC<{}> = () => {
                 <Header />
             </header>
             <main id="main" className="dashboard">
-                <div className="dashboard-wrapper">
+                <div className={`dashboard-wrapper ${user ? "login" : "logout"}`}>
                     {user ? (
                         <>
                             <Timeline />
